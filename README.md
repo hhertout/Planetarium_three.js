@@ -4,8 +4,8 @@ Setup with Vite.js
 
 ## How to run
 
-- npm install
-- npm run dev
+<code>npm install</code>
+<code>npm run dev</code>
 
 then go to http://localhost:5173/
 
