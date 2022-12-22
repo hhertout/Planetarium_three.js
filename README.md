@@ -7,5 +7,5 @@ Setup with Vite.js
 - <code>npm install</code>
 - <code>npm run dev</code>
 
-then go to http://localhost:5173/
+then follow the localhost link provide by vite.
 
