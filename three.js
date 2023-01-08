@@ -46,6 +46,7 @@ const revolutionTime = {
 };
 
 const rotationTime = {
+    sun: 1 / 25,
   earth: 1,
   mercury: 1 / 58,
   venus: 1 / 243,
@@ -129,20 +130,20 @@ const jupiter = new THREE.Mesh(
 scene.add(jupiter);
 
 const neptun = new THREE.Mesh(
-    new THREE.SphereGeometry(planetSize.neptun, 120, 120),
-    new THREE.MeshStandardMaterial({
-      map: neptunTexture,
-    })
-  );
-  scene.add(neptun);
+  new THREE.SphereGeometry(planetSize.neptun, 120, 120),
+  new THREE.MeshStandardMaterial({
+    map: neptunTexture,
+  })
+);
+scene.add(neptun);
 
-  const uranus = new THREE.Mesh(
-    new THREE.SphereGeometry(planetSize.uranus, 120, 120),
-    new THREE.MeshStandardMaterial({
-      map: uranusTexture,
-    })
-  );
-  scene.add(uranus);
+const uranus = new THREE.Mesh(
+  new THREE.SphereGeometry(planetSize.uranus, 120, 120),
+  new THREE.MeshStandardMaterial({
+    map: uranusTexture,
+  })
+);
+scene.add(uranus);
 
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -216,26 +217,29 @@ const tick = () => {
   mars.position.x = Math.cos(elapsedTime * revolutionTime.mars) * dist.sunMars;
   mars.position.z = Math.sin(elapsedTime * revolutionTime.mars) * dist.sunMars;
 
-  neptun.position.x = Math.cos(elapsedTime * revolutionTime.neptun) * dist.sunNeptun;
-  neptun.position.z = Math.sin(elapsedTime * revolutionTime.neptun) * dist.sunNeptun;
+  neptun.position.x =
+    Math.cos(elapsedTime * revolutionTime.neptun) * dist.sunNeptun;
+  neptun.position.z =
+    Math.sin(elapsedTime * revolutionTime.neptun) * dist.sunNeptun;
 
-  uranus.position.x = Math.cos(elapsedTime * revolutionTime.uranus) * dist.sunUranus;
-  uranus.position.z = Math.sin(elapsedTime * revolutionTime.uranus) * dist.sunUranus;
+  uranus.position.x =
+    Math.cos(elapsedTime * revolutionTime.uranus) * dist.sunUranus;
+  uranus.position.z =
+    Math.sin(elapsedTime * revolutionTime.uranus) * dist.sunUranus;
 
   jupiter.position.x =
     Math.cos(elapsedTime * revolutionTime.jupiter) * dist.sunJupiter;
   jupiter.position.z =
     Math.sin(elapsedTime * revolutionTime.jupiter) * dist.sunJupiter;
 
-    sun.rotation.y = -elapsedTime * 0.3;
-    earth.rotation.y = elapsedTime * rotationTime.earth
-    mercury.rotation.y = elapsedTime * rotationTime.mercury
-    venus.rotation.y = elapsedTime * rotationTime.venus
-    mars.rotation.y = elapsedTime * rotationTime.mars
-    jupiter.rotation.y = elapsedTime * rotationTime.jupiter
-    neptun.rotation.y = elapsedTime * rotationTime.neptun
-    uranus.rotation.y = elapsedTime * rotationTime.uranus
-
+  sun.rotation.y = -elapsedTime * rotationTime.sun;
+  earth.rotation.y = elapsedTime * rotationTime.earth;
+  mercury.rotation.y = elapsedTime * rotationTime.mercury;
+  venus.rotation.y = elapsedTime * rotationTime.venus;
+  mars.rotation.y = elapsedTime * rotationTime.mars;
+  jupiter.rotation.y = elapsedTime * rotationTime.jupiter;
+  neptun.rotation.y = elapsedTime * rotationTime.neptun;
+  uranus.rotation.y = elapsedTime * rotationTime.uranus;
 
   renderer.render(scene, camera);
 
