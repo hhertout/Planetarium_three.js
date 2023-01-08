@@ -1,4 +1,4 @@
-# veille_three.js
+# Solar System 🪐
 
 Setup with Vite.js
 
